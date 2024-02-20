@@ -1,0 +1,18 @@
+게시판.txt
+
+- 데이터베이스
+	디비생성, 계정생성, 테이블 설계(ERD), 테이블 더미데이터 생성
+- 스프링 MVC
+	패키지 구조 설계, 개발환경 구성(빌드도구MAVEN), 컨트롤러, 서비스, DAO 구조 설계, 테스트 파일 생성
+- 화면(view)
+	뷰 페이지 형태 설정
+	
+	폼 xml(자바 -> 서블릿 -> Test(junit) -> </dependency> 외부 라이브러리 </dependency>) -> maven.plugins) -> Maven update 
+	Properties -> build path -> class path(톰캣 추가) -> Java Compiler(java11) -> Project Facets(web 3.1, Java 11)
+	
+	resources 복사(log4jdbc.log4j2.properties, logback.xml, mybatis-config.xml)
+	
+	root-context -> namespaces(context추가) -> DataSource(디비연결) -> Beans Graph(객체 생성 확인) -> 테스트(Test Java)
+	
+P83. 커넥션풀 : 디비 연결정보를 미리 생성/대여
+	=> HikariCP - 스프링부트에서도 사용
