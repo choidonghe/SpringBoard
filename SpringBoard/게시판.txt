@@ -60,7 +60,14 @@ P83. 커넥션풀 : 디비 연결정보를 미리 생성/대여
 			본문삭제POST : /board/remove?bno=000
 			
 	BoardController 생성 -> 호출 확인 -> jsp 페이지 생성(원하는 태블릿 복사, method = POST) -> 405확인
-			
+	
+	POST -> 전달정보 저장(정보 확인) -> 서비스 생성(글쓰기 동작) -> 서비스Impl(어노테이션, DAO주입, 글쓰기) 
+	-> root-context.xml 객체 주입
+	
+	DAO 생성(글쓰기 동작) -> DAOImpl 생성(어노테이션, mapper주입(root-context sqlsession 작성, 객체주입))
+
+	Mapper.xml 생성(Mybatis 홈페이지 DOCTYPE 복사 붙여넣기) -> namespace -> 쿼리 작성 -> 
+	DAOImpl 작성 -> ServiceImpl 작성 -> Controller(Service 주입) 작성 -> SQL 데이터 저장 확인 -> list	
 	
 	
 	
