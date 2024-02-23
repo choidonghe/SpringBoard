@@ -36,7 +36,7 @@ P83. 커넥션풀 : 디비 연결정보를 미리 생성/대여
 		=> 프로젝트의 복잡도가 높고, 하나의 계층에 포함되는 클래스가 많은경우
 			기능별로 명확안 구분이 가능한 경우, 추후에 별도로 모듈 분리가 가능한경우
 			
-	Mappers -> 한글 필터 -> 서버(톰캣) Add and Remove 프로젝트 넣기 -> 서버 path 설정
+	mappers -> 한글 필터 -> 서버(톰캣) Add and Remove 프로젝트 넣기 -> 서버 path 설정
 	
 	* 컨트롤러 설계
 	- 공통적인 URI의 경로/ 각 기능별  URI 경로
@@ -68,6 +68,64 @@ P83. 커넥션풀 : 디비 연결정보를 미리 생성/대여
 
 	Mapper.xml 생성(Mybatis 홈페이지 DOCTYPE 복사 붙여넣기) -> namespace -> 쿼리 작성 -> 
 	DAOImpl 작성 -> ServiceImpl 작성 -> Controller(Service 주입) 작성 -> SQL 데이터 저장 확인 -> list	
+	
+	
+	* 의존객체 자동주입 : 스프링(컨테이너)이(가) 자동으로 의존관계에 있는 객체를 사용하도록 의존성을 주입하는것
+	
+	- @Inject : Java에서 지원하는 어노테이션(특정 프레임워크에 종속적이지 않다)
+	
+		* 의존객체를 찾는순서
+		  [타입] -> [@Qualifier] -> [이름] -> 실패
+	
+		* 빌드도구(Maven/gradle)를 사용해서 라이브러리 의존성 추가필요
+		* 멤버변수, setter(set메서드), 생성자, 일반메서드 사용가능
+	
+	- @Autowired : Spring에서 지원하는 어노테이션
+	
+		* 의존객체를 찾는순서
+		  [타입] -> [이름] -> [@Qualifier] -> 실패
+	  	* @Inject와 찾는순서만 다를뿐 동일하게 동작
+	  	* <context:annotation-config/> 구문 설정필요
+	  	* 멤버변수, setter(set메서드), 생성자, 일반메서드 사용가능
+	  	
+	- @Resource : Java에서 지원하는 어노테이션(특정 프레임워크에 종속적이지 않다)
+		
+		* 의존객체를 찾는순서
+		   [이름] -> [타입] -> [@Qualifier] -> 실패
+		* <context:annotation-config/> 구문 설정필요
+		* 멤버변수, setter(set메서드) 사용가능
+	
+	* @Qualifier : 객체를 주입 받아올때 동일한 객체(bean)가 있을경우 예외발생
+		-> 특정 객체를 구분하기위한 이름(별명)
+		
+	<bean id="dataSource1"
+		  class="com.zaxxer.hikari.HikariConfig">
+		  <qualifier value="ds1"/>
+	</bean>
+	
+	<bean id="dataSource2"
+		  class="com.zaxxer.hikari.HikariConfig">
+		  <qualifier value="ds2"/>
+	</bean>
+	
+	@Inject / @Autowired @Qualifier("ds2")
+	private DataSource ds;
+	
+	
+	// 생성자 주입	
+	private DataSource ds;
+	
+	public Test(DataSource ds){
+		this.ds = ds;
+	}
+	
+	Controller List GET 생성 -> jsp생성 -> 서비스 -> 서비스Impl -> DAO -> DAOImpl -> Mapper
+	-> DAOImpl return -> 서비스Impl return -> Controller 작성 -> jsp 작성
+	
+	
+	
+	
+	
 	
 	
 	
