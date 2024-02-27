@@ -24,16 +24,18 @@ ${boardList.size()}
 						<th style="width: 40px">viewcnt</th>
 						<th>regdate</th>
 					</tr>
-					<c:forEach var="BDL" items="${boardList}">
+					<c:forEach var="bVO" items="${boardList}">
 					<tr>
-						<td>${BDL.bno }</td>
-						<td>${BDL.title}</td>
+						<td>${bVO.bno }</td>
 						<td>
-							${BDL.writer}
+						<a href="/board/read?bno=${bVO.bno }">${bVO.title}</a>
 						</td>
-						<td><span class="badge bg-red">${BDL.viewcnt}</span></td>
 						<td>
-						<fmt:formatDate value="${BDL.regdate}" pattern="yy.MM.dd"/> 
+							${bVO.writer}
+						</td>
+						<td><span class="badge bg-red">${bVO.viewcnt}</span></td>
+						<td>
+						<fmt:formatDate value="${bVO.regdate}" pattern="yy.MM.dd"/> 
 						</td>
 					</tr>
 					</c:forEach>
