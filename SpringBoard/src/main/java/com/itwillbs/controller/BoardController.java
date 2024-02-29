@@ -27,7 +27,11 @@ public class BoardController {
 	@Inject
 	private BoardService bService;
 	
+	
+	
 	//http://localhost:8088/board/register
+	
+	
 	
 	// 글쓰기GET : /board/register
 	@RequestMapping(value = "/register",method = RequestMethod.GET)
@@ -55,7 +59,11 @@ public class BoardController {
 				
 			}
 	
+	
+	
 	//http://localhost:8088/board/list
+	
+	
 	
 	// 리스트GET : /board/list
 	@RequestMapping(value = "/list",method = RequestMethod.GET)
@@ -139,14 +147,21 @@ public class BoardController {
 		return "redirect:/board/list";
 	}
 	
-	// 본문삭제 POST : /board/
-	@RequestMapping(value = "/delete",method = RequestMethod.POST)
-	public String deletePOST(@RequestParam("bno") int bno) throws Exception{
-		logger.debug("deletePOST() 호출");
+	// 본문삭제 POST : /board/remove + (post)bno=000
+	@RequestMapping(value = "/remove",method = RequestMethod.POST)
+	public String removePOST(@RequestParam("bno") int bno) throws Exception{
+		logger.debug(" /board/remove -> removePOST() 호출");
 		
-		bService.deleteBoard(bno);
+		//전달 정보 저장 bno
+		logger.debug("bno :" + bno);
 		
+		// 서비스 -> DAO 게시판글 삭제 동작
+		bService.removeBoard(bno);
+		
+		// 페이지 이동 ( /board/list)
 		return "redirect:/board/list";
+		
+		
 		
 	}
 }

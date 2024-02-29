@@ -59,8 +59,8 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public void deleteBoard(Integer bno) throws Exception {
-		logger.debug("deleteBoard(BoardVO vo) 호출 ");
+	public void removeBoard(Integer bno) throws Exception {
+		logger.debug("removeBoard(Integer bno) 호출 ");
 		
 		bdao.boardDelete(bno);
 		

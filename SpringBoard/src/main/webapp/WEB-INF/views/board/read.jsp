@@ -59,6 +59,7 @@ viewUpdateStatus : ${viewUpdateStatus}
 		$(".btn-danger").click(function(){
 			alert(" 수정하기 버튼 클릭 ! ")
 			
+			//attr : 속성 변경
 			formObj.attr("action","/board/modify");
 			formObj.submit();
 
@@ -67,7 +68,8 @@ viewUpdateStatus : ${viewUpdateStatus}
 		$(".btn-warning").click(function(){
 			alert(" 삭제하기 버튼 클릭 !")
 			
-			formObj.attr("action","/board/delete");
+			formObj.attr("action","/board/remove");
+			formObj.attr("method","post");
 			formObj.submit();
 		});
 		

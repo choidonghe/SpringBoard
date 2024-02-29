@@ -28,7 +28,7 @@
 		
 		<!-- 글 조회 -->
 		<select id="selectBoard" resultType="BoardVo" >
-			select * from tbl_board 
+			select * from tbl_board
 			where bno=#{bno}
 		</select>
 		
@@ -38,14 +38,14 @@
 			where bno = #{bno}
 		</update>
 		
-		<!-- 글 수정 -->
+		<!-- 글 정보 수정 -->
 		<update id="updateBoard">
 			update tbl_board set title=#{title},writer=#{writer},content=#{content}
 			where bno = #{bno}
 		</update>
 		
-		<!-- 글 삭제 -->
-		<delete id="Delete">
+		<!-- 글 정보 삭제 -->
+		<delete id="deleteBoard">
 			delete from tbl_board
 			where bno = #{bno}
 		</delete>

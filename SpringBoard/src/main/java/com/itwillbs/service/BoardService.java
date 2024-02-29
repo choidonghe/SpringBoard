@@ -30,6 +30,6 @@ public interface BoardService {
 	public void modifyBoard(BoardVO vo) throws Exception;
 	
 	// 글 삭제 동작
-	public void deleteBoard(Integer bno) throws Exception;
+	public void removeBoard(Integer bno) throws Exception;
 	
 }
