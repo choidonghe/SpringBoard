@@ -12,7 +12,7 @@ import com.itwillbs.domain.BoardVO;
 
 public interface BoardDAO {
 	
-	//글쓰기 동작
+	// 글 쓰기 동작
 	public void boardCreate(BoardVO vo) throws Exception;
 	
 	// 글 목록 조회
@@ -20,5 +20,14 @@ public interface BoardDAO {
 	
 	// 글 내용 조회
 	public BoardVO boardSelect(Integer bno) throws Exception;
-
+	
+	// 글  조회수 1증가 동작
+	public void boardViewcntUpdate(int bno) throws Exception;
+	
+	// 글 수정 동작
+	public void boardUpdate(BoardVO vo) throws Exception;
+	
+	// 글 삭제 동작
+	public void boardDelete(Integer bno) throws Exception;
+	
 }

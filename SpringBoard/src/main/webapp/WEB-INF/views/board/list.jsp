@@ -5,7 +5,8 @@
 	
 <%@ include file="../include/header.jsp"%>
 
-${boardList.size()}
+${boardList.size()} <br>
+viewUpdateStatus : ${viewUpdateStatus}
 
 <div class="content">
 
